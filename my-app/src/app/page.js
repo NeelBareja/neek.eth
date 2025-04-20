@@ -25,37 +25,52 @@ export default function Home() {
 
   const renderButton = () => {
     if (address) {
-    //if the user has connected their wallet,
-      <div>Wallet connected</div>;
+      // Fix: Adding return statement for when wallet is connected
+      return (
+        <div className="p-4 rounded-lg bg-green-600 text-white font-bold">
+          Wallet connected
+        </div>
+      );
     } else {
       return (
-      // if the user hasn't connected their wallet, show them a connect wallet button
-       <ConnectButton />
-       // this button is provided to us by RainbowKit itself
+       <div className="connect-button-wrapper">
+         <ConnectButton showBalance={true} chainStatus="icon" />
+       </div>
       );
     }
   };
   return (
-    <div>
-      <div className={" min-h-[90vh] flex justify-center items-center font-sans max-[1000px]:w-full max-[1000px]:flex-col max-[1000px]:justify-center max-[1000px]:items-center  "}>
-        <div className="pl-12">
-          <h1 className="text-4xl my-8  mx-0 ">
-            Welcome to LearnWeb3 Punks {ens ? ens : address}!
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-1 flex justify-center items-center font-sans p-8 max-[1000px]:flex-col max-[1000px]:justify-center max-[1000px]:items-center">
+        <div className="lg:pl-12 max-w-lg">
+          <h1 className="text-5xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">
+            Welcome to LearnWeb3 Punks
+            {ens || address ? (
+              <div className="mt-2 text-3xl">
+                {ens ? ens : address ? `${address.slice(0, 6)}...${address.slice(-4)}` : ""}!
+              </div>
+            ) : null}
           </h1>
-          <div className={"leading-4 my-8 mx-0 text-xl"}>
-            {/* Using HTML Entities for the apostrophe */}
+          <div className="mb-8 text-xl leading-relaxed opacity-80">
             It&#39;s an NFT collection for LearnWeb3 Punks.
           </div>
-          {renderButton()}
+          <div className="mt-6">
+            {renderButton()}
+          </div>
         </div>
-        <div>
-          <img className={" w-[70%] h-[50%] ml-[20%]"} src="/learnweb3punks.png" />
+        <div className="lg:w-1/2 flex justify-center p-6">
+          <Image 
+            src="/learnweb3punks.png" 
+            alt="LearnWeb3 Punks NFT" 
+            width={400} 
+            height={400}
+            className="rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300"
+          />
         </div>
       </div>
 
-      <footer className={"flex py-[1.4rem] border-t-2 border-[#eaeaea] justify-center items-center"}>
-
-        Made with &#10084; by LearnWeb3 Punks
+      <footer className="py-6 border-t border-gray-700 text-center">
+        <p className="text-lg">Made with <span className="text-red-500">&#10084;</span> by LearnWeb3 Punks</p>
       </footer>
     </div>
   );
