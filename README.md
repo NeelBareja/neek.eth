@@ -35,7 +35,7 @@ This dApp allows users to connect their Ethereum wallet (via various providers l
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ens-dapp.git
+   git clone https://github.com/NeelBareja/neek.eth.git
    cd ens-dapp
    ```
 
