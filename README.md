@@ -2,8 +2,6 @@
 
 A modern web application that connects to Ethereum wallets and displays Ethereum Name Service (ENS) information.
 
-![ENS dApp Screenshot](https://via.placeholder.com/800x400?text=ENS+dApp+Screenshot)
-
 ## Overview
 
 This dApp allows users to connect their Ethereum wallet (via various providers like MetaMask, WalletConnect, etc.) and displays their ENS name if they have one registered. The application is built with modern web technologies and provides a smooth, responsive user experience with dark/light mode support.
